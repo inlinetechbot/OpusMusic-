@@ -19,19 +19,19 @@ from opus.helpers import Track, utils
 APIS = [
     {
         "url": "https://api.shrutibots.site",
-        "key": "ShrutiBotssWg4dn7KsrjaVwgjpq4j",
+        "key": "ShrutiBotsG0Fy3VjZqQ9vocThxxIr",
         "param": "api_key",
         "endpoint": "/download",
     },
     {
         "url": "https://api01.shrutibots.site",
-        "key": "ShrutiBotsv5GJeaWIfzejJ8o0xnhw",
+        "key": "ShrutiBotsCnZJrOai5BPsmaLqie5w",
         "param": "api_key",
         "endpoint": "/download",
     },
     {
         "url": "https://api01.shrutibots.site",
-        "key": "ShrutiBotsvoySy5NkjijEJCL9arWK",
+        "key": "ShrutiBotsNJD81XGNOL7uEzRvYLxV",
         "param": "api_key",
         "endpoint": "/download",
     },
