@@ -8,7 +8,6 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/* \
     && curl -fsSL https://deno.land/install.sh | sh
 
-
 ENV DENO_INSTALL="/root/.deno"
 ENV PATH="${DENO_INSTALL}/bin:${PATH}"
 
@@ -20,5 +19,13 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen
 
 COPY . .
+
+# --- Antideploy ko yeh batane ke liye ki kaunse env vars chahiye ---
+ENV BOT_TOKEN=""
+ENV API_ID=""
+ENV API_HASH=""
+ENV DATABASE_URL=""
+ENV OWNER_ID=""
+# ...jo bhi tumhare bot ko actually chahiye, sab yahan empty declare karo
 
 CMD ["bash", "start"]
