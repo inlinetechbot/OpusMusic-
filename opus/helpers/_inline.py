@@ -211,29 +211,32 @@ class Inline:
         """
         Source submenu - Click pe direct Telegram profile khulega
 
-        👑 Owner     |  💻 Developer
-        🔧 Admin     |  💬 Ask me  
-        🔙 Back      |  ❌ Close
+        Row 1: Owner
+        Row 2: Source Code | Any Quastion
+        Row 3: Developer
+        Row 4: Back | Close
 
         NOTE: Sirf username dalna hai, User ID ki zaroorat nahi!
         """
         return self.ikm(
             [
                 [
-                    self.ikb(text="👑 𝐎𝗐𝗇𝖾𝗋 ", url="https://t.me/realitywasalie",
-                             style=enums.ButtonStyle.PRIMARY),
-                    self.ikb(text="💻 𝐃𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝗋", url="https://t.me/Ucan_callme_X",
+                    self.ikb(text="👑 𝐎𝗐𝗇𝖾𝗋", url="https://t.me/realitywasalie",
                              style=enums.ButtonStyle.PRIMARY),
                 ],
                 [
                     self.ikb(text="🔧 𝐒𝗈𝗎𝗋𝖼𝖾 𝐂𝗈𝖽𝖾", url="https://github.com/TeamAlfaBots/OpusMusic-/fork",
-                             style=enums.ButtonStyle.PRIMARY),
+                             style=enums.ButtonStyle.DANGER),
                     self.ikb(text="💬 𝐀𝗇𝗒 𝐐𝗎𝖺𝗌𝗍𝗂𝗈𝗇", url="https://t.me/II_DEAD_SOUL",
-                             style=enums.ButtonStyle.PRIMARY),
+                             style=enums.ButtonStyle.DANGER),
+                ],
+                [
+                    self.ikb(text="💻 𝐃𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝗋", url="https://t.me/Ucan_callme_X",
+                             style=enums.ButtonStyle.SUCCESS),
                 ],
                 [
                     self.ikb(text=lang.get("back", "⇲ 𝐁𝖺𝖼𝗄"), callback_data="source_back",
-                             style=enums.ButtonStyle.SUCCESS),
+                             style=enums.ButtonStyle.PRIMARY),
                     self.ikb(text=lang.get("close", "❌ 𝐂𝗅𝗈𝗌𝖾"), callback_data="help close",
                              style=enums.ButtonStyle.DANGER),
                 ],
@@ -250,5 +253,5 @@ class Inline:
                              style=enums.ButtonStyle.DANGER),
                 ],
             ]
-        )
-          
+      )
+      
