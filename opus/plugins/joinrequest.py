@@ -11,7 +11,7 @@ from opus import app, config
 #&&
 
 # ── Request / confirm message ki image (yahan apna URL daalo) ─────────────────
-RQS_IMG_URL = "https://files.catbox.moe/ynwsxi.png"
+RQS_IMG_URL = "https://files.catbox.moe/beec33.png"
 
 _pending: dict[str, dict] = {}
 
