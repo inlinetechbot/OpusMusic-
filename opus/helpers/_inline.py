@@ -226,7 +226,7 @@ class Inline:
                              style=enums.ButtonStyle.PRIMARY),
                 ],
                 [
-                    self.ikb(text="🔧 𝐒𝗈𝗎𝗋𝖼𝖾 𝐂𝗈𝖽𝖾", url="https://github.com/TeamAlfaBots/OpusMusic-",
+                    self.ikb(text="🔧 𝐒𝗈𝗎𝗋𝖼𝖾 𝐂𝗈𝖽𝖾", url="https://github.com/TeamAlfaBots/OpusMusic-/fork",
                              style=enums.ButtonStyle.PRIMARY),
                     self.ikb(text="💬 𝐀𝗇𝗒 𝐐𝗎𝖺𝗌𝗍𝗂𝗈𝗇", url="https://t.me/II_DEAD_SOUL",
                              style=enums.ButtonStyle.PRIMARY),
