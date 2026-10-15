@@ -3,6 +3,7 @@
 # This file is part of OpusMusic
 
 import asyncio
+import html
 import random
 from datetime import datetime
 
@@ -62,26 +63,37 @@ def _time_greeting() -> str:
     return "🌙 ɢσσᴅ ηɪɢʜᴛ"
 
 
+def _user_link(user: types.User) -> str:
+    # User ka naam clickable - tap karne par uski profile khulegi
+    name = html.escape(user.first_name or "User")
+    return f'<a href="tg://user?id={user.id}">{name}</a>'
+
+
+def _bot_link() -> str:
+    # Bot ka naam clickable - tap karne par bot ka profile/chat khulega
+    return f'<a href="https://t.me/{app.username}">{html.escape(app.name)}</a>'
+
+
 def _premium_caption(base_text: str, first_name: str) -> str:
     greeting = _time_greeting()
     tip = random.choice(_TIPS)
-    version = getattr(config, "VERSION", "3.0")
+    version = getattr(config, "VERSION", "2.0")
     return (
         f"✦ {greeting}, <b>{first_name}</b> 👋\n\n"
         f"{base_text}\n\n"
         f"{_DIVIDER}\n"
-        f"<b>◈ {app.name}</b>  <code>v{version}</code>\n"
+        f"<b>◈ {_bot_link()}</b>  <code>v{version}</code>\n"
         f"{tip}\n"
         f"{_DIVIDER}"
     )
 
 
 def _group_caption(base_text: str) -> str:
-    version = getattr(config, "VERSION", "3.0")
+    version = getattr(config, "VERSION", "2.0")
     return (
         f"{base_text}\n\n"
         f"{_DIVIDER}\n"
-        f"<b>◈ {app.name}</b>  <code>v{version}</code>\n"
+        f"<b>◈ {_bot_link()}</b>  <code>v{version}</code>\n"
         f"✦ ʜɪɢʜ-qᴜᴧʟɪᴛʏ • ʟσᴡ-ʟᴧᴛєηᴄʏ • ᴧʟᴡᴧʏꜱ ση\n"
         f"{_DIVIDER}"
     )
@@ -165,13 +177,13 @@ async def start(_, message: types.Message):
 
     # 5. Build caption
     base_text = (
-        message.lang["start_pm"].format(message.from_user.first_name, app.name)
+        message.lang["start_pm"].format(_user_link(message.from_user), _bot_link())
         if private
-        else message.lang["start_gp"].format(app.name)
+        else message.lang["start_gp"].format(_bot_link())
     )
 
     _text = (
-        _premium_caption(base_text, message.from_user.first_name)
+        _premium_caption(base_text, _user_link(message.from_user))
         if private
         else _group_caption(base_text)
     )
@@ -253,4 +265,4 @@ async def _new_member(_, message: types.Message):
                 return
             await utils.send_log(message, True)
             await db.add_chat(message.chat.id)
-            
+
