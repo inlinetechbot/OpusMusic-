@@ -65,7 +65,7 @@ def _time_greeting() -> str:
 def _premium_caption(base_text: str, first_name: str) -> str:
     greeting = _time_greeting()
     tip = random.choice(_TIPS)
-    version = getattr(config, "VERSION", "2.0")
+    version = getattr(config, "VERSION", "3.0")
     return (
         f"✦ {greeting}, <b>{first_name}</b> 👋\n\n"
         f"{base_text}\n\n"
@@ -77,7 +77,7 @@ def _premium_caption(base_text: str, first_name: str) -> str:
 
 
 def _group_caption(base_text: str) -> str:
-    version = getattr(config, "VERSION", "2.0")
+    version = getattr(config, "VERSION", "3.0")
     return (
         f"{base_text}\n\n"
         f"{_DIVIDER}\n"
