@@ -46,6 +46,7 @@ def _user_buttons() -> types.InlineKeyboardMarkup:
     # Request karne wale user ko jane wale dono messages ke buttons
     #   Row 1: Add me
     #   Row 2: Support | Update
+    #   Row 3: Tap to claim your surprise  (bot start -> /start trigger)
     return types.InlineKeyboardMarkup([
         [
             types.InlineKeyboardButton(
@@ -66,28 +67,40 @@ def _user_buttons() -> types.InlineKeyboardMarkup:
                 style=enums.ButtonStyle.PRIMARY,
             ),
         ],
+        [
+            types.InlineKeyboardButton(
+                text="🎁 ᴛᴀᴘ ᴛᴏ ᴄʟᴀɪᴍ ʏᴏᴜʀ sᴜʀᴘʀɪsᴇ",
+                url=f"https://t.me/{app.username}?start=true",
+                style=enums.ButtonStyle.SUCCESS,
+            ),
+        ],
     ])
 
 
 def _request_text(full_name: str, chat_title: str) -> str:
     # Request daalte hi user ko jane wala message
+    # Pehla quote normal, doosra expandable (tap karke khulta / band hota hai)
     return (
-        f"💐 ʜᴇʏ {_esc(full_name)} 👋\n\n"
+        f"<blockquote>💐 ʜᴇʏ {_esc(full_name)} 👋</blockquote>\n"
+        f"<blockquote expandable>"
         f"💮 ᴛʜᴀɴᴋ ʏᴏᴜ ꜰᴏʀ ʀᴇǫᴜᴇsᴛɪɴɢ <b>{_esc(chat_title)}</b>\n\n"
         f"ɪ'ᴍ {_esc(app.name)} - ᴧ ʜɪɢʜ ǫᴜᴧʟɪᴛʏ ᴍᴜsɪᴄ sᴛʀєᴧᴍɪηɢ ʙσᴛ "
         f"ғσʀ ᴛєʟєɢʀᴧᴍ ɢʀσᴜᴘs & ᴄʜᴧηηєʟs 🚀\n\n"
         f"ᴊᴜsᴛ sєηᴅ /start ᴛσ sєє ʙσᴛ ᴍєηᴜ ᴧηᴅ ᴄσᴍᴍᴧηᴅs 📋"
+        f"</blockquote>"
     )
 
 
 def _confirm_text(full_name: str, chat_title: str) -> str:
     # Request accept hone ke baad user ko jane wala message
     return (
-        f"💐 ʜᴇʏ {_esc(full_name)} 👋\n\n"
+        f"<blockquote>💐 ʜᴇʏ {_esc(full_name)} 👋</blockquote>\n"
+        f"<blockquote expandable>"
         f"🎉 ʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ᴛᴏ ᴊᴏɪɴ <b>{_esc(chat_title)}</b> ʜᴀs ʙᴇᴇɴ ᴀᴄᴄᴇᴘᴛᴇᴅ\n\n"
         f"ɪ'ᴍ {_esc(app.name)} - ᴧ ʜɪɢʜ ǫᴜᴧʟɪᴛʏ ᴍᴜsɪᴄ sᴛʀєᴧᴍɪηɢ ʙσᴛ "
         f"ғσʀ ᴛєʟєɢʀᴧᴍ ɢʀσᴜᴘs & ᴄʜᴧηηєʟs 🚀\n\n"
         f"ᴊᴜsᴛ sєηᴅ /start ᴛσ sєє ʙσᴛ ᴍєηᴜ ᴧηᴅ ᴄσᴍᴍᴧηᴅs 📋"
+        f"</blockquote>"
     )
 
 
@@ -232,4 +245,4 @@ async def joinrequest_decision(_, query: types.CallbackQuery):
 
     _pending.pop(key, None)
     await query.answer()
-    
+
