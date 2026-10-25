@@ -18,7 +18,7 @@ from opus.helpers import Track, utils
 # ── Multi-API Config ──────────────────────────────────────────
 APIS = [
     {
-        "url": "https://api.shrutibots.site",
+        "url": "https://api.shrutibots.in",
         "key": "ShrutiBotsG0Fy3VjZqQ9vocThxxIr",
         "param": "api_key",
         "endpoint": "/download",
